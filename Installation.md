@@ -86,6 +86,7 @@ To set up a React Native development environment, ensure the following technolog
   - For Emulator : `npx react-native run-android`
   - For Physical Device : `npx react-native run-android --device=device id`
     - for example : `npx react-native run-android --device=fee58892`
+    - **Run the above code on app file**
 
 **NOTE: React Native does not auto-generate this file when SDK paths are missing. You must create it manually**
 
