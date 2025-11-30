@@ -123,8 +123,6 @@ function App() {
 export default App;
 ```
 
----
-
 **Explanation:**
 
 - The component is wrapped with SafeAreaView, ensuring content stays within safe display boundaries on modern devices.
