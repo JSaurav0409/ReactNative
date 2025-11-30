@@ -48,31 +48,31 @@
 
 10. App.tsx:
 
-- This is the files which bring everything on the screen.
+    - This is the files which bring everything on the screen.
 
 11. babel.config.js:
 
-- It is a bundler which combine all other file and make it available and runnable for browser and mobile device.
+    - It is a bundler which combine all other file and make it available and runnable for browser and mobile device.
 
 12. Gemfile:
 
-- It is a ruby base file contains `cocoapods` which mainly use for iOS development.
+    - It is a ruby base file contains `cocoapods` which mainly use for iOS development.
 
 13. index.js:
 
-- This is the file which bundlers open first.
+    - This is the file which bundlers open first.
 
 14. metro.config.js:
 
-- We will never going to change it, it is a bundler which help us to do all the tasks.
+    - We will never going to change it, it is a bundler which help us to do all the tasks.
 
 15. tsconfig.json:
 
-- It is a typescript configuration file.
+    - It is a typescript configuration file.
 
 16. package.json:
 
-- It stores dependencies,dev dependencies and scripts.
+    - It stores dependencies,dev dependencies and scripts.
 
 ---
 
