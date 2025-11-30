@@ -1,4 +1,4 @@
-\*\*# Project02 — React Native UI
+# Project02 — React Native UI
 
 ## Flat Cards.
 
