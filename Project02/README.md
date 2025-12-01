@@ -258,7 +258,7 @@ const App = () => {
 export default App;
 ```
 
-**🎯 What You Learned**
+## 🎯 What You Learned
 
 - How to implement horizontal scrolling in React Native.
 
