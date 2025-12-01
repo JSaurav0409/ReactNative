@@ -230,10 +230,9 @@ const styles = StyleSheet.create({
   - Slightly rounded (borderRadius: 10)
   - Styled with a light background color
   - Given elevation to create a shadow (Android)
-  - ````tsx
-        elevation: 8;
-        ```
-    ````
+  - ```tsx
+    elevation: 8;
+    ```
 
 **🧩 Updated App.tsx**
 
