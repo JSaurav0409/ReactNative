@@ -273,3 +273,230 @@ export default App;
 - How elevation differs from normal flat cards.
 
 - How to combine multiple components inside a scrollable layout.
+
+---
+
+## 📘 FancyCard Component — Notes
+
+### ✅ What This Component Does
+
+- Displays a **trending place card** with an image and details.
+- Works as a reusable UI block in travel, listings, or discovery screens.
+- Demonstrates **cross-platform shadow**, image rendering, and text hierarchy.
+- 🧱 Component Structure
+
+```bash
+FancyCard
+├── Heading ("Trending Places")
+└── Card Container
+├── Image (place photo)
+└── Body
+├── Title
+├── Label / Subtitle
+├── Description
+└── Footer text
+```
+
+---
+
+**🏗️ Component Overview**
+
+`FancyCard` is a reusable UI card component that displays:
+
+- A section heading
+- An elevated card container
+- A top image
+- Title, location label, description, and footer text
+
+Useful for showcasing **places, products, or featured items** in an app.
+
+---
+
+```tsx
+// In Components create FanceCard.tsx
+
+import { Image, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+
+export default function FancyCard() {
+  return (
+    <View>
+      <Text style={styles.headingText}>Trending Places</Text>
+      <View style={[styles.card, styles.cardElevated]}>
+        <Image
+          source={{
+            uri: 'https://imgs.search.brave.com/iQKLS0mnp-WfnQgslv5qFdp7CeqV9TIpie3OWgvVdJo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9oYXdhLW1haGFs/LXBhbGFjZS1qYWlw/dXJfNzgzNjEtNDQ0/Ny5qcGc_c2VtdD1h/aXNfaHlicmlkJnc9/NzQwJnE9ODA',
+          }}
+          style={styles.cardImage}
+        />
+        <View style={styles.cardBody}>
+          <Text style={styles.cardTitle}>Hawa Mahal</Text>
+          <Text style={styles.cardLabel}>Jaipur, The Pink City</Text>
+          <Text style={styles.cardDescription}>
+            The Hawa Mahal is a palace in the city of Jaipur, India. Built from
+            red and pink sandstone, it is on the edge of the city palace.
+          </Text>
+          <Text style={styles.cardFooter}>10 mins away</Text>
+        </View>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  headingText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginHorizontal: 20,
+  },
+
+  card: {
+    width: '90%',
+    alignSelf: 'center',
+    borderRadius: 10,
+    overflow: 'hidden',
+    backgroundColor: '#fff',
+    marginVertical: 12,
+  },
+
+  cardElevated: {
+    elevation: 5, // Android shadow
+    shadowColor: '#000', // iOS shadow
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+  },
+
+  cardImage: {
+    height: 200,
+    width: '100%',
+  },
+
+  cardBody: {
+    flex: 1,
+    flexGrow: 1,
+    padding: 12,
+  },
+
+  cardTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    marginBottom: 4,
+  },
+
+  cardLabel: {
+    fontSize: 14,
+    color: '#555',
+    marginBottom: 6,
+  },
+
+  cardDescription: {
+    fontSize: 13,
+    color: '#444',
+    marginTop: 8,
+    marginBottom: 12,
+    flexShrink: 1,
+  },
+
+  cardFooter: {
+    fontSize: 12,
+    color: '#888',
+    fontStyle: 'italic',
+  },
+});
+```
+
+---
+
+**🧩 Updated App.tsx**
+
+```tsx
+import { View, Text, ScrollView } from 'react-native';
+import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import FlatCards from './components/FlatCards';
+import ElevatedCards from './components/ElevatedCards';
+import FancyCard from './components/FancyCard';
+
+function App() {
+  return (
+    <SafeAreaView>
+      <ScrollView>
+        <FlatCards />
+        <ElevatedCards /> // Import Elevated Cards from components
+        <FancyCard /> // Import Fancy Cards from components
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+export default App;
+```
+
+---
+
+### **🎨 Style Breakdown**
+
+- **headingText**
+
+  - Large and bold header text with horizontal margin.
+
+- **card**
+
+  - 90% width and centered using `alignSelf`.
+  - Rounded edges using `borderRadius: 10`.
+  - White background.
+  - `overflow: 'hidden'` ensures the image respects the border radius.
+  - Vertical margin for spacing between cards.
+
+- **cardElevated**
+  - Shadow system for cross-platform effects:
+
+| Property        | Platform | Purpose                                       |
+| --------------- | -------- | --------------------------------------------- |
+| `elevation`     | Android  | Creates drop shadow based on elevation value. |
+| `shadowColor`   | iOS      | Defines shadow color.                         |
+| `shadowOffset`  | iOS      | Controls shadow position (x, y).              |
+| `shadowOpacity` | iOS      | Adjusts transparency of the shadow (0–1).     |
+| `shadowRadius`  | iOS      | Sets blur radius for the shadow.              |
+
+> Android _mostly_ uses `elevation`, whereas iOS relies on shadow properties.
+
+- **cardImage**
+
+  - Full-width cover image.
+  - Height set to 200.
+
+- **cardBody**
+
+  - Padding around inner content.
+  - `flexGrow: 1` allows the content to stretch if needed.
+
+- **cardTitle**
+
+  - Bold and slightly large heading text.
+
+- **cardLabel**
+
+  - Subheading with muted grey tone.
+
+- **cardDescription**
+
+  - Normal description text.
+  - `flexShrink: 1` prevents overflow when content is long.
+  - Vertical spacing applied.
+
+- **cardFooter**
+
+  - Small, muted, italic text ideal for tags like “10 mins away”.
+
+---
+
+### 📌 Key Takeaways
+
+- Learned to combine **Android elevation** and **iOS shadow props** for cross-platform card shadows.
+- Used **responsive image styling** with full-width layout and rounded corners.
+- Applied proper **text hierarchy** (title → label → description → footer) for clean UI.
+- Used **flexGrow** and spacing to structure card content neatly.
+- Styled a **reusable card pattern** useful for travel, products, or listings.
+- Improved understanding of **layout, shadows, spacing, and typography** in React Native.
