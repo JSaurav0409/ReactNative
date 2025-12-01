@@ -90,8 +90,6 @@ To set up a React Native development environment, ensure the following technolog
 
 **NOTE: React Native does not auto-generate this file when SDK paths are missing. You must create it manually**
 
-Project/
-|-> android /
-|-> local.properties <- Create this file here
+Project/ android / local.properties <- Create this file here
 
 **sdk.dir=C:\\Users\\Dell\\AppData\\Local\\Android\\Sdk**
