@@ -52,6 +52,13 @@ const styles = StyleSheet.create({
 
   cardElevated: {
     backgroundColor: '#CAD5E2',
-    elevation: 8, // Provide box shadow at bottom
+    elevation: 8, // Adds Android elevation, creating a raised card effect
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    }, // Controls the shadow's direction and position (iOS)
+    shadowColor: '#234', // Defines the shadow color (iOS)
+    shadowOpacity: 0.6, // Controls how transparent or dark the shadow appears, ranges between 0 - 1 (iOS)
+    shadowRadius: 2, // Sets how soft or spread out the shadow edges are (iOS)
   },
 });
