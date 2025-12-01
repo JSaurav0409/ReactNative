@@ -1,17 +1,29 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, useColorScheme } from 'react-native';
 import React from 'react';
 
 export default function FlatCards() {
+  const isDarkMode = useColorScheme() === 'dark';
+
   return (
     <View>
-      <Text style={[styles.headingText, styles.whiteText]}>Flat Cards</Text>
+      <Text
+        style={[
+          styles.headingText,
+          isDarkMode ? styles.whiteText : styles.darkText,
+        ]}
+      >
+        Flat Cards
+      </Text>
+
       <View style={styles.container}>
         <View style={[styles.card, styles.cardOne]}>
           <Text style={styles.whiteText}>RED</Text>
         </View>
+
         <View style={[styles.card, styles.cardTwo]}>
           <Text style={styles.whiteText}>Green</Text>
         </View>
+
         <View style={[styles.card, styles.cardThree]}>
           <Text style={styles.whiteText}>Blue</Text>
         </View>
@@ -31,8 +43,11 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
 
+  darkText: {
+    color: '#000000', // FIXED
+  },
+
   container: {
-    flex: 1,
     flexDirection: 'row',
     padding: 8,
   },
