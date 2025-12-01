@@ -28,7 +28,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FlatCards from './components/FlatCards';
 
-const App = () => {
+function App() {
   return (
     <SafeAreaView>
       <ScrollView>
@@ -36,7 +36,7 @@ const App = () => {
       </ScrollView>
     </SafeAreaView>
   );
-};
+}
 
 export default App;
 ```
@@ -136,7 +136,7 @@ Each card:
 
 ## 🎯Learning Outcomes
 
-After completing Project02, we will understand:
+After completing Flat Cards part, we will understand:
 
 - How to create custom UI components
 - How to style components using StyleSheet
@@ -250,7 +250,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import FlatCards from './components/FlatCards';
 import ElevatedCards from './components/ElevatedCards';
 
-const App = () => {
+function App() {
   return (
     <SafeAreaView>
       <ScrollView>
@@ -259,7 +259,7 @@ const App = () => {
       </ScrollView>
     </SafeAreaView>
   );
-};
+}
 
 export default App;
 ```
