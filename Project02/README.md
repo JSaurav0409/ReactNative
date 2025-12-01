@@ -136,9 +136,134 @@ Each card:
 
 ## 🎯Learning Outcomes
 
-After completing Project02, you will understand:
+After completing Project02, we will understand:
 
 - How to create custom UI components
 - How to style components using StyleSheet
 - How to use Flexbox for layout in React Native
 - How to structure components cleanly
+
+---
+
+## 🎴 ElevatedCards Component
+
+- `ElevatedCards` demonstrates how to create horizontally scrollable cards with elevation (shadow), giving your UI a lifted, modern look.
+
+```js
+// Create ElevatedCards.tsx in components folder
+
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+
+export default function ElevatedCards() {
+  return (
+    <View>
+      <Text style={styles.headingText}>Elevated Cards</Text>
+      <ScrollView horizontal={true} style={styles.container}>
+        <View style={[styles.card, styles.cardElevated]}>
+          <Text>Tap</Text>
+        </View>
+        <View style={[styles.card, styles.cardElevated]}>
+          <Text>Me</Text>
+        </View>
+        <View style={[styles.card, styles.cardElevated]}>
+          <Text>To</Text>
+        </View>
+        <View style={[styles.card, styles.cardElevated]}>
+          <Text>Scroll</Text>
+        </View>
+        <View style={[styles.card, styles.cardElevated]}>
+          <Text>More....</Text>
+        </View>
+        <View style={[styles.card, styles.cardElevated]}>
+          <Text>😊</Text>
+        </View>
+      </ScrollView>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  headingText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    paddingHorizontal: 20,
+  },
+
+  container: {
+    padding: 8,
+  },
+
+  card: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 100,
+    width: 100,
+    borderRadius: 10,
+    margin: 10,
+  },
+
+  cardElevated: {
+    backgroundColor: '#CAD5E2',
+    elevation: 8, // Adds a shadow effect
+  },
+});
+```
+
+**Explanation:**
+
+- **Heading :**
+
+  - Displays the title "Elevated Cards" with bold styling.
+
+- **Horizontal Scroll :**
+  - Enables smooth left-to-right scrolling.
+  - Ideal for cards, categories, tags, and suggestions UI.
+  - ```tsx
+    <ScrollView horizontal={true}>
+    ```
+- **Cards :**
+
+  - Square (100×100)
+  - Center-aligned
+  - Slightly rounded (borderRadius: 10)
+  - Styled with a light background color
+  - Given elevation to create a shadow (Android)
+  - ````tsx
+        elevation: 8;
+        ```
+    ````
+
+**🧩 Updated App.tsx**
+
+```tsx
+import { View, Text, ScrollView } from 'react-native';
+import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import FlatCards from './components/FlatCards';
+import ElevatedCards from './components/ElevatedCards';
+
+const App = () => {
+  return (
+    <SafeAreaView>
+      <ScrollView>
+        <FlatCards />
+        <ElevatedCards /> // Imported ElevatedCards from components
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+
+export default App;
+```
+
+**🎯 What You Learned**
+
+- How to implement horizontal scrolling in React Native.
+
+- How to create reusable elevated-card UI components.
+
+- How elevation differs from normal flat cards.
+
+- How to combine multiple components inside a scrollable layout.
