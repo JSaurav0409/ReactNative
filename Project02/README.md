@@ -604,7 +604,7 @@ function openWebsite(url) {
 
 ---
 
-### TouchableOpacity (Pressable Button with Fade Effect)
+### 👆 TouchableOpacity (Pressable Button with Fade Effect)
 
 `TouchableOpacity` makes any element tappable and adds a smooth opacity fade animation on press.
 
