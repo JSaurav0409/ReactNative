@@ -492,6 +492,66 @@ export default App;
 
 ---
 
+## React Native `<Image />` — Quick Guide
+
+### What it does
+
+`<Image />` displays images in a React Native app from local files, URLs, or base64.
+
+### Common Props (Brief)
+
+**1. source**
+Defines where the image comes from.
+
+- Local: `source={require('./img.png')}`
+- Remote: `source={{ uri: 'https://example.com/pic.jpg' }}`
+
+**2. style**
+Controls width, height, border, resize mode, etc.
+
+- Example: `{ width: 100, height: 100 }`
+
+**3. resizeMode**
+How the image fits inside its container.
+
+- `cover`: fills container, may crop
+- `contain`: fits without cropping
+- `stretch`: stretches
+- `center`: centers without scaling
+- `repeat`: tiles the image
+
+**4. defaultSource** (iOS only)
+Shows a placeholder before the real image loads.
+
+**5. loadingIndicatorSource**
+Shows a loading image while fetching remote images (Android only).
+
+**6. blurRadius**
+Adds a blur effect (number value).
+
+**7. onLoad / onError**
+Callbacks when the image loads or fails.
+
+**8. fadeDuration** (Android)
+Fade-in time in ms for image loading.
+
+---
+
+**Quick Example**
+
+```jsx
+<Image
+  source={{ uri: 'https://example.com/pic.jpg' }}
+  style={{ width: 120, height: 120, borderRadius: 10 }}
+  resizeMode="cover"
+  onLoad={() => console.log('Loaded')}
+  onError={() => console.log('Error')}
+  blurRadius={2}
+/>
+```
+
+---
+
 ### 📌 Key Takeaways
 
 - Learned to combine **Android elevation** and **iOS shadow props** for cross-platform card shadows.
@@ -500,3 +560,82 @@ export default App;
 - Used **flexGrow** and spacing to structure card content neatly.
 - Styled a **reusable card pattern** useful for travel, products, or listings.
 - Improved understanding of **layout, shadows, spacing, and typography** in React Native.
+
+---
+
+## React Native Notes: Linking & TouchableOpacity
+
+### 🔗 Linking API (Open external URLs)
+
+`Linking` is used to open websites, social profiles, phone numbers, emails, and deep links from your React Native app.
+
+**Import**
+
+```js
+import { Linking } from 'react-native';
+
+Linking.openURL('https://example.com');
+
+// Safer Method (Checks before opening)
+
+const url = 'https://example.com';
+
+Linking.canOpenURL(url)
+  .then(supported => {
+    if (supported) {
+      Linking.openURL(url);
+    }
+  })
+  .catch(err => console.error('Error', err));
+
+// Inside a function
+
+function openWebsite(url) {
+  Linking.openURL(url);
+}
+```
+
+**Typical Use Cases**
+
+- Open a website.
+- Open LinkedIn, Instagram, Facebook.
+- Call a number → Linking.openURL('tel:9876543210')
+- Send email → Linking.openURL('mailto:test@example.com')
+
+---
+
+### TouchableOpacity (Pressable Button with Fade Effect)
+
+`TouchableOpacity` makes any element tappable and adds a smooth opacity fade animation on press.
+
+```tsx
+// Import
+
+import { TouchableOpacity } from 'react-native';
+
+<TouchableOpacity
+  onPress={() => openWebsite('https://www.linkedin.com/in/contact-sauravjha/')}
+>
+  <Text style={styles.socialLink}>Follow Me</Text>
+</TouchableOpacity>;
+```
+
+| Prop                          | Description                         |
+| ----------------------------- | ----------------------------------- |
+| **onPress**                   | Opens the Linked URL when tapped.   |
+| **children (Text inside)**    | The visible “Follow Me” button UI.  |
+| **style**                     | Apply styles                        |
+| **pacity feedback (default)** | Button fades slightly when pressed. |
+
+---
+
+**🎯 In Simple Words**
+
+- **TouchableOpacity** = makes anything clickable
+- **onPress** = defines what happens when clicked
+- **Linking.openURL()** = opens the provided website
+- You get a clean, smooth button-like behaviour without needing a separate `<Button />` component
+- Great for “Read More”, “Follow Me”, “Contact”, and similar navigation actions.
+- Simple to implement, widely used, and highly user-friendly in mobile apps.
+
+---
