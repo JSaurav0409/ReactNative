@@ -24,10 +24,10 @@ const getUniqueColors = count => {
 export default function App() {
   const [bgColor, setBgColor] = useState('#ffffff');
   const [shapeColors, setShapeColors] = useState({
-    tl: '#FF0000',
-    tr: '#00FF00',
-    bl: '#0000FF',
-    br: '#FFFF00',
+    tl: '#fa5555ff',
+    tr: '#61fa61ff',
+    bl: '#4f4fe9ff',
+    br: '#f8f84bff',
   });
 
   const handlePress = () => {
