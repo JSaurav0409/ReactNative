@@ -1,119 +1,82 @@
-# Random Background Color App – Documentation
+# Shape Color Changer App – Brief Documentation
 
 ## Overview
 
-- This React Native app changes the background color of the screen randomly when the user presses a button.
-- It demonstrates basic state management, event handling, and dynamic styling in React Native.
+- This React Native app displays four shapes fixed at the four corners of the screen.
+- On pressing the **“Press Me!”** button, the background color and each shape’s color change.
+- Every color generated is **unique**, ensuring no two shapes or the background share the same color.
 
 ---
 
-## Core Concepts Used
+## Core Logic
+
+### Random Color Generator
+
+```js
+const getRandomColor = () => { ... }
+```
+
+- Creates a valid 6-digit hexadecimal color.
+- Uses random selection from hexadecimal characters **(0–F)**.
+
+---
+
+### Unique Color Generation
+
+```js
+const getUniqueColors = count => { ... }
+
+```
+
+- Uses a **Set** to avoid duplicate colors.
+- Returns the exact number of unique colors requested.
+
+---
 
 ### State Management
 
-```js
-const [randomBgColor, setrandomBgColor] = useState('#ffffff');
-```
-
-- `useState` initializes the background color with white.
-- `randomBgColor` holds the current background color value.
-- Updating the state automatically re-renders the UI.
-
-### Color Generator Logic
-
-```js
-const genrateColor = () => {
-  const hexRange = '0123456789ABDCDEF';
-  let color = '#';
-
-  for (let idx = 0; idx < 6; idx++) {
-    color += hexRange[Math.floor(Math.random() * 16)];
-  }
-
-  setrandomBgColor(color);
-};
-```
-
-- **hexRange** contains all valid hexadecimal characters.
-- A hex color always starts with **#**.
-- The loop runs 6 times to generate a valid 6-digit hex color.
-- Math.random() generates a random index between 0 and 15.
-- A random character is appended to the color string in each iteration.
-- The final color is stored in state using **setrandomBgColor**.
+- **bgColor** stores the background color of the app.
+- **shapeColors** stores individual colors for each shape:
+  - **tl** → top-left square
+  - **tr** → top-right circle
+  - **bl** → bottom-left circle
+  - **br** → bottom-right rectangle
 
 ---
 
-### UI Components used
-
-**StatusBar**
+### User Interaction
 
 ```js
-<StatusBar backgroundColor={randomBgColor} />
+const handlePress = () => { ... }
 ```
 
-- Updates the status bar color dynamically.
-- Keeps the system UI consistent with the app background.
+- Generates 5 unique colors on each button press.
+- Assigns:
+  - 1 color to the background
+  - 4 colors to the shapes
+- Triggers a re-render with updated colors.
 
-**Main Container**
+---
 
-```js
-<View style={[styles.container, { backgroundColor: randomBgColor }]}>
+### Layout and Styling
 
-```
-
-- Acts as the full-screen container.
-- Applies the dynamic background color.
-
-**Button UI**
-
-```js
-<View style={styles.actionBtn}>
-  <Text style={styles.btnText}>Press Me !</Text>
-</View>
-```
-
-- Displays a tappable button.
-- Styled using padding, border radius, and uppercase text.
-
-**Styling**
-
-```js
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  actionBtn: {
-    borderRadius: 12,
-    backgroundColor: '#1481dbff',
-    paddingVertical: 10,
-    paddingHorizontal: 40,
-  },
-  btnText: {
-    fontSize: 24,
-    color: '#ffffff',
-    textTransform: 'uppercase',
-  },
-});
-```
-
-- flex: 1 fills the entire screen.
-- Content is centered both vertically and horizontally.
-- Button styling improves usability and visual clarity.
+- Shapes are positioned using **position: 'absolute'** to stay fixed in corners.
+- Flexbox is used only for centering the button.
+- Each shape has a distinct style (square, circle, rectangle).
 
 ---
 
 ### Application Flow
 
-- App loads with a default white background.
-- User presses the “Press Me!” button.
-- A random hex color is generated.
-- Background and status bar colors update instantly.
+1. App loads with default colors.
+2. User presses “Press Me!”.
+3. Background and shapes update with new unique colors.
+4. Shape positions remain unchanged.
 
-### Key Takeaways
+---
 
-- Demonstrates how state controls UI behavior.
-- Shows practical use of event handling in React Native.
-- Highlights dynamic styling and real-time UI updates.
-- A beginner-friendly example for understanding interactive components.
+## Key Takeaways
+
+- Demonstrates controlled randomness using **Set**.
+- Shows how to updated drives UI changes.
+- Reinforces absolute positioning and reusable styling patterns in React Native.
