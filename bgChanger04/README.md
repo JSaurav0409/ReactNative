@@ -25,7 +25,6 @@ const getRandomColor = () => { ... }
 
 ```js
 const getUniqueColors = count => { ... }
-
 ```
 
 - Uses a **Set** to avoid duplicate colors.
